@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react"
 import ReactDOM from "react-dom"
 import { Button } from "antd"
-// import 'virtual:windi.css';
-// import "antd/es/button/style/index.css"
+import "../global.less"
+import "windi.css"
 
 const Popup = () => {
   const [count, setCount] = useState(0)
   const [currentURL, setCurrentURL] = useState<string>()
 
-  useEffect(() => {
-    chrome.action.setBadgeText({ text: count.toString() })
-  }, [count])
+  // useEffect(() => {
+  //   chrome.action.setBadgeText({ text: count.toString() })
+  // }, [count])
 
   useEffect(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -37,9 +37,9 @@ const Popup = () => {
 
   return (
     <div style={{ width: "360px" }}>
-      <Button>xxx</Button>
+      <Button type="primary">xxx</Button>
       <h1>popup</h1>
-      <div className="bg-dark-100">hhh</div>
+      <div className="bg-yellow-100">hhh</div>
     </div>
   )
 }
