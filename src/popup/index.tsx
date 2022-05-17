@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react"
 import ReactDOM from "react-dom"
-import { Button } from "antd"
+import { Tabs } from "antd"
 import "../global.less"
 import "windi.css"
+
+const { TabPane } = Tabs
 
 const Popup = () => {
   const [count, setCount] = useState(0)
@@ -36,10 +38,25 @@ const Popup = () => {
   }
 
   return (
-    <div style={{ width: "360px" }}>
-      <Button type="primary">xxx</Button>
-      <h1>popup</h1>
-      <div className="bg-yellow-100">hhh</div>
+    <div className="w-362px h-524px">
+      <div>
+        <Tabs centered>
+          <TabPane tab="工具" key="1">
+            <div className="flex justify-around">
+              <a href="https://www.newrank.cn/">新榜</a>
+              <a href="https://www.baidu.com/">百度</a>
+              <a href="https://www.sina.com.cn/">新浪</a>
+              <a href="https://www.qq.com/">腾讯</a>
+            </div>
+          </TabPane>
+          <TabPane tab="管理" key="2">
+            <p>管理</p>
+          </TabPane>
+          <TabPane tab="设置" key="3">
+            <p>设置</p>
+          </TabPane>
+        </Tabs>
+      </div>
     </div>
   )
 }
