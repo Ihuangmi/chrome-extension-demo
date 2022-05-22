@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react"
 import ReactDOM from "react-dom"
-import { Tabs } from "antd"
+import { Tabs, Button, Input } from "antd"
 import "../global.less"
 import "windi.css"
 
 const { TabPane } = Tabs
 
 const Popup = () => {
-  const [count, setCount] = useState(0)
+  const [text, setText] = useState<string>('')
   const [currentURL, setCurrentURL] = useState<string>()
 
   // useEffect(() => {
@@ -20,20 +20,17 @@ const Popup = () => {
     })
   }, [])
 
-  const changeBackground = () => {
+  function sendMessageToContentScript(message: any, callback: (response: any) => void) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      const tab = tabs[0]
-      if (tab.id) {
-        chrome.tabs.sendMessage(
-          tab.id,
-          {
-            color: "#555555",
-          },
-          (msg) => {
-            console.log("result message:", msg)
-          }
-        )
-      }
+      chrome.tabs.sendMessage(tabs[0]?.id!, message, function (response) {
+        if (callback) callback(response);
+      });
+    });
+  }
+
+  function sendMessage() {
+    sendMessageToContentScript({ text: text }, (response) => {
+      console.log('来自content的回复：' + response);
     })
   }
 
@@ -43,14 +40,20 @@ const Popup = () => {
         <Tabs centered>
           <TabPane tab="工具" key="1">
             <div className="flex justify-around">
-              <a href="https://www.newrank.cn/">新榜</a>
-              <a href="https://www.baidu.com/">百度</a>
-              <a href="https://www.sina.com.cn/">新浪</a>
-              <a href="https://www.qq.com/">腾讯</a>
+              <a onClick={() => chrome.tabs.create({ url: 'https://www.newrank.cn' })} >新榜</a>
+              <a onClick={() => chrome.tabs.create({ url: 'https://www.baidu.com' })} >百度</a>
+              <a onClick={() => chrome.tabs.create({ url: 'https://www.sina.com.cn' })} >新浪</a>
+              <a onClick={() => chrome.tabs.create({ url: 'https://www.qq.com' })} >腾讯</a>
             </div>
           </TabPane>
           <TabPane tab="管理" key="2">
             <p>管理</p>
+            <Button>打开Options</Button>
+            <div>
+              向content发送消息：<br />
+              <Input placeholder="请输入内容" value={text} onChange={(e) => setText(e.target.value)} />
+              <Button onClick={() => sendMessage()}>发送</Button>
+            </div>
           </TabPane>
           <TabPane tab="设置" key="3">
             <p>设置</p>

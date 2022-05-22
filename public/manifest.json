@@ -3,28 +3,38 @@
   "name": "hm-extend",
   "description": "Chrome Extension",
   "version": "1.0",
-
   "options_ui": {
     "page": "options.html"
   },
-
   "action": {
     "default_icon": "face.png",
     "default_popup": "popup.html"
   },
-
+  "page_action": {
+    "default_icon": "icon.png",
+    "default_title": "我是pageAction",
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["js/vendor.js", "js/content_script.js"]
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "js/vendor.js",
+        "js/content_script.js"
+      ],
+      "run_at": "document_start"
     }
   ],
-
   "background": {
     "service_worker": "js/background.js"
   },
-
-  "permissions": ["storage"],
-
-  "host_permissions": ["<all_urls>"]
+  "permissions": [
+    "storage",
+    "declarativeContent"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
 }
