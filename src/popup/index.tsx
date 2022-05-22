@@ -8,17 +8,14 @@ const { TabPane } = Tabs
 
 const Popup = () => {
   const [text, setText] = useState<string>('')
-  const [currentURL, setCurrentURL] = useState<string>()
+  // const [currentURL, setCurrentURL] = useState<string>()
+
 
   // useEffect(() => {
-  //   chrome.action.setBadgeText({ text: count.toString() })
-  // }, [count])
-
-  useEffect(() => {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      setCurrentURL(tabs[0].url)
-    })
-  }, [])
+  //   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  //     setCurrentURL(tabs[0].url)
+  //   })
+  // }, [])
 
   function sendMessageToContentScript(message: any, callback: (response: any) => void) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -47,12 +44,16 @@ const Popup = () => {
             </div>
           </TabPane>
           <TabPane tab="管理" key="2">
-            <p>管理</p>
-            <Button>打开Options</Button>
+            <p>管理----------</p>
+            <Button type="primary" onClick={() => {
+
+              chrome.tabs.update({ url: 'chrome://extensions/?options=' + chrome.runtime.id });
+
+            }}>打开Options</Button>
             <div>
               向content发送消息：<br />
               <Input placeholder="请输入内容" value={text} onChange={(e) => setText(e.target.value)} />
-              <Button onClick={() => sendMessage()}>发送</Button>
+              <Button type="primary" onClick={() => sendMessage()}>发送</Button>
             </div>
           </TabPane>
           <TabPane tab="设置" key="3">
