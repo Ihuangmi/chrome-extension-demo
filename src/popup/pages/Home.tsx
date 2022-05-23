@@ -1,13 +1,8 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import ReactDOM from "react-dom"
-import { HashRouter, Route, Routes, Outlet } from "react-router-dom"
-import Login from "./pages/login"
-// import Home from "./pages/home"
-
 import { Tabs, Button, Input, Avatar } from "antd"
 import { LoginOutlined, UserOutlined } from "@ant-design/icons"
 import styles from "./index.module.less"
-import "../global.less"
 import "windi.css"
 
 const { TabPane } = Tabs
@@ -127,24 +122,4 @@ const Home = () => {
   )
 }
 
-// export default Home
-
-const Popup = () => {
-  return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/foo" element={<Login history={[]} />} />
-        <Route path="/bar" element={<Home />} />
-      </Routes>
-      <Outlet />
-    </HashRouter>
-  )
-}
-
-ReactDOM.render(
-  <React.StrictMode>
-    <Popup />
-  </React.StrictMode>,
-  document.getElementById("root")
-)
+export default Home
