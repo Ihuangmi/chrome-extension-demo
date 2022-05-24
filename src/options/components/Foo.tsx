@@ -1,7 +1,6 @@
 import React from "react"
 
-
 const Foo = () => {
-    return <>Foo</>
+  return <>Foo</>
 }
 export default Foo
