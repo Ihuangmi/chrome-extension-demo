@@ -51,6 +51,7 @@ const Options = () => {
 
   return (
     <BrowserRouter>
+      <h1>随便给options的标题</h1>
       <NavLink to="/foo">Foo</NavLink>
       <br />
       <NavLink to="/Bar">Bar</NavLink>
