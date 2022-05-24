@@ -4,21 +4,29 @@
   "description": "Chrome Extension",
   "version": "1.0",
   "options_ui": {
-    "page": "options.html"
+    "page": "options.html",
+    "open_in_tab": true
   },
   "action": {
     "default_icon": "face.png",
+    "default_title": "我是hm的demo小插件",
     "default_popup": "popup.html"
   },
+  "icons": {
+    "16": "face.png",
+    "48": "face.png",
+    "128": "face.png"
+  },
   "page_action": {
-    "default_icon": "icon.png",
-    "default_title": "我是pageAction",
+    "default_icon": "baidu.png",
+    "default_title": "我是hm的demo小插件",
     "default_popup": "popup.html"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["js/vendor.js", "js/content_script.js"],
+      "css": ["custom.css"],
       "run_at": "document_start"
     }
   ],

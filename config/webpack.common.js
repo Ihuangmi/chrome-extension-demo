@@ -9,7 +9,7 @@ module.exports = {
     popup: path.join(srcDir, "popup/index.tsx"),
     options: path.join(srcDir, "options/index.tsx"),
     background: path.join(srcDir, "background.ts"),
-    content_script: path.join(srcDir, "content_script.tsx"),
+    content_script: path.join(srcDir, "content_script.ts"),
     inject: path.join(srcDir, "inject.ts"),
   },
   output: {
