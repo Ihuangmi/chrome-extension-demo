@@ -38,18 +38,18 @@ chrome.runtime.onInstalled.addListener(function () {
 //   },
 // })
 
-chrome.contextMenus.create({
-  title: "使用度娘搜索：%s", // %s表示选中的文字
-  contexts: ["selection"], // 只有当选中文字时才会出现此右键菜单
-  onclick: function (params) {
-    // 注意不能使用location.href，因为location是属于background的window对象
-    chrome.tabs.create({
-      url:
-        "https://www.baidu.com/s?ie=utf-8&wd=" +
-        encodeURI(params.selectionText || ""),
-    })
-  },
-})
+// chrome.contextMenus.create({
+//   title: "使用度娘搜索：%s", // %s表示选中的文字
+//   contexts: ["selection"], // 只有当选中文字时才会出现此右键菜单
+//   onclick: function (params) {
+//     // 注意不能使用location.href，因为location是属于background的window对象
+//     chrome.tabs.create({
+//       url:
+//         "https://www.baidu.com/s?ie=utf-8&wd=" +
+//         encodeURI(params.selectionText || ""),
+//     })
+//   },
+// })
 
 setInterval(() => {
   console.log(new Date().toLocaleTimeString())
@@ -60,4 +60,4 @@ setInterval(() => {
     title: "活动一下吧",
     message: "您已经连续坐着工作1分钟了，起身活动一下吧",
   })
-}, 3600000)
+}, 60000 * 60)

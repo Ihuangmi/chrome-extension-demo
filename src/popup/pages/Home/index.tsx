@@ -49,40 +49,34 @@ function Home() {
     })
   }
 
+  function handleLink(e: any) {
+    console.log(e.target.innerText)
+    switch (e.target.innerText) {
+      case "新榜":
+        chrome.tabs.create({ url: "https://www.newrank.cn" })
+        break
+      case "百度":
+        chrome.tabs.create({ url: "https://www.baidu.com" })
+        break
+      case "新浪":
+        chrome.tabs.create({ url: "https://www.sina.com.cn" })
+        break
+      case "腾讯":
+        chrome.tabs.create({ url: "https://www.qq.com" })
+        break
+    }
+  }
+
   return (
     <div className={styles.tabsWarper}>
       {isLogin ? (
         <Tabs centered className="h-[100%]">
           <TabPane tab="工具" key="1">
-            <div className="flex justify-around">
-              <a
-                onClick={() =>
-                  chrome.tabs.create({ url: "https://www.newrank.cn" })
-                }
-              >
-                新榜
-              </a>
-              <a
-                onClick={() =>
-                  chrome.tabs.create({ url: "https://www.baidu.com" })
-                }
-              >
-                百度
-              </a>
-              <a
-                onClick={() =>
-                  chrome.tabs.create({ url: "https://www.sina.com.cn" })
-                }
-              >
-                新浪
-              </a>
-              <a
-                onClick={() =>
-                  chrome.tabs.create({ url: "https://www.qq.com" })
-                }
-              >
-                腾讯
-              </a>
+            <div className="flex justify-around" onClick={handleLink}>
+              <a>新榜</a>
+              <a>百度</a>
+              <a>新浪</a>
+              <a>腾讯</a>
             </div>
           </TabPane>
 
@@ -121,7 +115,17 @@ function Home() {
               </div>
               <div
                 className="text-center h-50px cursor-pointer"
-                onClick={() => navigate("/login")}
+                onClick={() => {
+                  // navigate("/login")
+                  chrome.storage.sync.remove("username", function () {
+                    //do something
+                    console.log("username remove")
+                    setIsLogin(false)
+                  })
+                  // chrome.storage.sync.clear(function () {
+                  //   //do something
+                  // })
+                }}
               >
                 <LoginOutlined />
                 退出登录
@@ -136,8 +140,7 @@ function Home() {
             <Button
               type="primary"
               onClick={() => {
-                setIsLogin(true)
-                // navigate("/login")
+                navigate("/login")
                 // chrome.tabs.update({
                 //   url: loginUrl,
                 // })
