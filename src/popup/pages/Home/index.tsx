@@ -1,12 +1,13 @@
-import 'windi.css'
+import 'windi.css';
 
-import { Avatar, Button, Input, Tabs } from 'antd'
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Avatar, Button, Col, Input, Row, Tabs } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { LoginOutlined, UserOutlined } from '@ant-design/icons'
+import { LoginOutlined, UserOutlined } from '@ant-design/icons';
 
-import styles from './index.module.less'
+import { data } from './DataSource';
+import styles from './index.module.less';
 
 const { TabPane } = Tabs
 
@@ -41,19 +42,10 @@ const Home = () => {
 
   function handleLink(e: any) {
     console.log(e.target.innerText)
-    switch (e.target.innerText) {
-      case '新榜':
-        chrome.tabs.create({ url: 'https://www.newrank.cn' })
-        break
-      case '百度':
-        chrome.tabs.create({ url: 'https://www.baidu.com' })
-        break
-      case '新浪':
-        chrome.tabs.create({ url: 'https://www.sina.com.cn' })
-        break
-      case '腾讯':
-        chrome.tabs.create({ url: 'https://www.qq.com' })
-        break
+
+    const web = data.filter((d) => d.label === e.target.innerText)
+    if (web.length > 0) {
+      chrome.tabs.create({ url: web[0].url })
     }
   }
 
@@ -62,11 +54,14 @@ const Home = () => {
       {isLogin ? (
         <Tabs centered className="h-[100%]">
           <TabPane tab="工具" key="1">
-            <div className="flex justify-around" onClick={handleLink}>
-              <a>新榜</a>
-              <a>百度</a>
-              <a>新浪</a>
-              <a>腾讯</a>
+            <div className="p-10px" onClick={handleLink}>
+              <Row>
+                {data.map((item) => (
+                  <Col key={item.url} span={6} className="mb-8px font-bold">
+                    <a>{item.label}</a>
+                  </Col>
+                ))}
+              </Row>
             </div>
           </TabPane>
 
