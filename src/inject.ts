@@ -20,4 +20,4 @@
 //     }
 //     window.sendMessageToContentScriptByEvent = sendMessageToContentScriptByEvent;
 // })();
-console.log("insert.js loaded")
+console.log('insert.js loaded')

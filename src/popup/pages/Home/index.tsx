@@ -1,34 +1,31 @@
-import 'windi.css';
+import 'windi.css'
 
-import { Avatar, Button, Input, Tabs } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Avatar, Button, Input, Tabs } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { LoginOutlined, UserOutlined } from '@ant-design/icons';
+import { LoginOutlined, UserOutlined } from '@ant-design/icons'
 
-import styles from './index.module.less';
+import styles from './index.module.less'
 
 const { TabPane } = Tabs
 
 const Home = () => {
   const navigate = useNavigate()
   const [isLogin, setIsLogin] = useState(false)
-  const [text, setText] = useState<string>("")
-  const [name, setName] = useState<string>("")
+  const [text, setText] = useState<string>('')
+  const [name, setName] = useState<string>('')
 
   useEffect(() => {
     // 读取数据，第一个参数是指定要读取的key以及设置默认值
-    chrome.storage.sync.get({ username: "", password: "" }, function (items) {
+    chrome.storage.sync.get({ username: '', password: '' }, function (items) {
       setName(items.username)
       setIsLogin(items.username ? true : false)
       console.log(items.username, items.password)
     })
   }, [])
 
-  function sendMessageToContentScript(
-    message: any,
-    callback: (response: any) => void
-  ) {
+  function sendMessageToContentScript(message: any, callback: (response: any) => void) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.sendMessage(tabs[0]?.id!, message, function (response) {
         if (callback) callback(response)
@@ -38,24 +35,24 @@ const Home = () => {
 
   function sendMessage() {
     sendMessageToContentScript({ text: text }, (response) => {
-      console.log("来自content的回复：" + response)
+      console.log('来自content的回复：' + response)
     })
   }
 
   function handleLink(e: any) {
     console.log(e.target.innerText)
     switch (e.target.innerText) {
-      case "新榜":
-        chrome.tabs.create({ url: "https://www.newrank.cn" })
+      case '新榜':
+        chrome.tabs.create({ url: 'https://www.newrank.cn' })
         break
-      case "百度":
-        chrome.tabs.create({ url: "https://www.baidu.com" })
+      case '百度':
+        chrome.tabs.create({ url: 'https://www.baidu.com' })
         break
-      case "新浪":
-        chrome.tabs.create({ url: "https://www.sina.com.cn" })
+      case '新浪':
+        chrome.tabs.create({ url: 'https://www.sina.com.cn' })
         break
-      case "腾讯":
-        chrome.tabs.create({ url: "https://www.qq.com" })
+      case '腾讯':
+        chrome.tabs.create({ url: 'https://www.qq.com' })
         break
     }
   }
@@ -88,11 +85,7 @@ const Home = () => {
               </Button>
               <div className="my-10px">向content发送消息：</div>
               <div className="flex">
-                <Input
-                  placeholder="请输入内容"
-                  value={text}
-                  onChange={(e) => setText(e.target.value)}
-                />
+                <Input placeholder="请输入内容" value={text} onChange={(e) => setText(e.target.value)} />
                 <Button type="primary" onClick={() => sendMessage()}>
                   发送
                 </Button>
@@ -109,7 +102,7 @@ const Home = () => {
               <div
                 className="text-center h-50px cursor-pointer"
                 onClick={() => {
-                  chrome.storage.sync.remove("username", function () {
+                  chrome.storage.sync.remove('username', function () {
                     setIsLogin(false)
                   })
                 }}
@@ -127,7 +120,7 @@ const Home = () => {
             <Button
               type="primary"
               onClick={() => {
-                navigate("/login")
+                navigate('/login')
               }}
             >
               登录

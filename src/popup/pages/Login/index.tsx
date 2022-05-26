@@ -1,20 +1,17 @@
-import { Button, Form, Input } from 'antd';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Button, Form, Input } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const navigate = useNavigate()
 
   const onFinish = (values: any) => {
-    console.log("Success:", values)
+    console.log('Success:', values)
     // storage中设置值
-    chrome.storage.sync.set(
-      { username: values.username, password: values.password },
-      function () {
-        console.log("登录成功")
-      }
-    )
-    navigate("/home")
+    chrome.storage.sync.set({ username: values.username, password: values.password }, function () {
+      console.log('登录成功')
+    })
+    navigate('/home')
   }
 
   return (
@@ -29,19 +26,11 @@ const Login = () => {
           onFinish={onFinish}
           autoComplete="off"
         >
-          <Form.Item
-            label="账号"
-            name="username"
-            rules={[{ required: true, message: "Please input your username!" }]}
-          >
+          <Form.Item label="账号" name="username" rules={[{ required: true, message: 'Please input your username!' }]}>
             <Input />
           </Form.Item>
 
-          <Form.Item
-            label="密码"
-            name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
-          >
+          <Form.Item label="密码" name="password" rules={[{ required: true, message: 'Please input your password!' }]}>
             <Input.Password />
           </Form.Item>
 

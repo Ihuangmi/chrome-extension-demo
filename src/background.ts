@@ -1,5 +1,5 @@
 chrome.runtime.onInstalled.addListener(function () {
-  console.log("插件已被安装")
+  console.log('插件已被安装')
   // // storage中设置值
   // chrome.storage.sync.set({ color: "#3aa757" }, function () {
   //   console.log("storage init color value")
@@ -23,10 +23,10 @@ chrome.runtime.onInstalled.addListener(function () {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(
       tabs[0]?.id!,
-      { greeting: "hello，我是后台，主动发消息给content-script" },
+      { greeting: 'hello，我是后台，主动发消息给content-script' },
       function (response) {
         console.log(response)
-      }
+      },
     )
   })
 })
@@ -55,9 +55,9 @@ setInterval(() => {
   console.log(new Date().toLocaleTimeString())
 
   chrome.notifications.create(null, {
-    type: "basic",
-    iconUrl: "../face.png",
-    title: "活动一下吧",
-    message: "您已经连续坐着工作很久了，起身活动一下吧",
+    type: 'basic',
+    iconUrl: '../face.png',
+    title: '活动一下吧',
+    message: '您已经连续坐着工作很久了，起身活动一下吧',
   })
 }, 60000 * 30)

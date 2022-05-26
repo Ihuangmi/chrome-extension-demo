@@ -1,12 +1,12 @@
-import '../global.less';
-import 'windi.css';
+import '../global.less'
+import 'windi.css'
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { HashRouter, Outlet, Route, Routes } from 'react-router-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { HashRouter, Outlet, Route, Routes } from 'react-router-dom'
 
-import Home from './pages/home';
-import Login from './pages/login';
+import Home from './pages/home'
+import Login from './pages/login'
 
 const Popup = () => {
   return (
@@ -27,5 +27,5 @@ ReactDOM.render(
   <React.StrictMode>
     <Popup />
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root'),
 )

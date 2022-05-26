@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { animated, useSpring } from 'react-spring';
+import React, { useState } from 'react'
+import { animated, useSpring } from 'react-spring'
 
 const Text = () => {
   const [flip, set] = useState(false)
@@ -20,10 +20,10 @@ const ChainExample = () => {
   const styles = useSpring({
     loop: true,
     to: [
-      { opacity: 1, color: "#ffaaee" },
-      { opacity: 0, color: "rgb(14,26,19)" },
+      { opacity: 1, color: '#ffaaee' },
+      { opacity: 0, color: 'rgb(14,26,19)' },
     ],
-    from: { opacity: 0, color: "red" },
+    from: { opacity: 0, color: 'red' },
   })
   return <animated.div style={styles}>I will fade in and out</animated.div>
 }
