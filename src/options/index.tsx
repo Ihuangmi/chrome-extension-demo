@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from "react"
-import ReactDOM from "react-dom"
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  NavLink,
-  Link,
-  Outlet,
-} from "react-router-dom"
-import Foo from "./components/Foo"
-import Bar from "./components/Bar"
+import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, NavLink, Outlet, Route, Routes } from 'react-router-dom';
 
-// &backUrl=${encodeURIComponent(
-//     `chrome://extensions/?options=${chrome.runtime.id}`
-//   )}
+import Bar from './components/Bar';
+import Foo from './components/Foo';
 
 const Options = () => {
   const [color, setColor] = useState<string>("")
@@ -41,10 +31,6 @@ const Options = () => {
       },
       () => {
         setStatus("Options saved.")
-        // const id = setTimeout(() => {
-        //   setStatus("")
-        // }, 1000)
-        // return () => clearTimeout(id)
       }
     )
   }

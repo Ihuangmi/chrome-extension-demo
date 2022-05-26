@@ -16,7 +16,9 @@
     "antd": "^4.20.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "react-spring": "^9.4.5",
+    "video.js": "^7.19.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.4",
@@ -24,6 +26,7 @@
     "@types/chrome": "0.0.158",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/video.js": "^7.3.40",
     "babel-plugin-import": "^1.13.5",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.7.1",

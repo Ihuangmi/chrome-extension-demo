@@ -1,10 +1,12 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import { HashRouter, Route, Routes, Outlet } from "react-router-dom"
-import Login from "./pages/login"
-import Home from "./pages/home"
-import "../global.less"
-import "windi.css"
+import '../global.less';
+import 'windi.css';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { HashRouter, Outlet, Route, Routes } from 'react-router-dom';
+
+import Home from './pages/home';
+import Login from './pages/login';
 
 const Popup = () => {
   return (

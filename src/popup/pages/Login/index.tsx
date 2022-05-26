@@ -1,8 +1,8 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { Form, Input, Button, Checkbox } from "antd"
+import { Button, Form, Input } from 'antd';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function Login() {
+const Login = () => {
   const navigate = useNavigate()
 
   const onFinish = (values: any) => {
@@ -17,10 +17,6 @@ function Login() {
     navigate("/home")
   }
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo)
-  }
-
   return (
     <>
       <div className="h-[100%] flex justify-center items-center">
@@ -31,7 +27,6 @@ function Login() {
           wrapperCol={{ span: 14 }}
           initialValues={{ remember: true }}
           onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
           <Form.Item

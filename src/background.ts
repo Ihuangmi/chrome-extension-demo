@@ -58,6 +58,6 @@ setInterval(() => {
     type: "basic",
     iconUrl: "../face.png",
     title: "活动一下吧",
-    message: "您已经连续坐着工作1分钟了，起身活动一下吧",
+    message: "您已经连续坐着工作很久了，起身活动一下吧",
   })
-}, 60000 * 60)
+}, 60000 * 30)

@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { Tabs, Button, Input, Avatar } from "antd"
-import { LoginOutlined, UserOutlined } from "@ant-design/icons"
-import styles from "./index.module.less"
-import "windi.css"
+import 'windi.css';
+
+import { Avatar, Button, Input, Tabs } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { LoginOutlined, UserOutlined } from '@ant-design/icons';
+
+import styles from './index.module.less';
 
 const { TabPane } = Tabs
-const loginUrl = `http://test.main.newrank.cn/user/login/m?type=121&source=181`
 
-function Home() {
+const Home = () => {
   const navigate = useNavigate()
   const [isLogin, setIsLogin] = useState(false)
-
   const [text, setText] = useState<string>("")
   const [name, setName] = useState<string>("")
-
-  // const [currentURL, setCurrentURL] = useState<string>()
-
-  // useEffect(() => {
-  //   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-  //     setCurrentURL(tabs[0].url)
-  //   })
-  // }, [])
 
   useEffect(() => {
     // 读取数据，第一个参数是指定要读取的key以及设置默认值
@@ -116,15 +109,9 @@ function Home() {
               <div
                 className="text-center h-50px cursor-pointer"
                 onClick={() => {
-                  // navigate("/login")
                   chrome.storage.sync.remove("username", function () {
-                    //do something
-                    console.log("username remove")
                     setIsLogin(false)
                   })
-                  // chrome.storage.sync.clear(function () {
-                  //   //do something
-                  // })
                 }}
               >
                 <LoginOutlined />
@@ -141,9 +128,6 @@ function Home() {
               type="primary"
               onClick={() => {
                 navigate("/login")
-                // chrome.tabs.update({
-                //   url: loginUrl,
-                // })
               }}
             >
               登录
