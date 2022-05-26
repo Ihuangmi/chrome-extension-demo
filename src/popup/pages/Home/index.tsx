@@ -1,13 +1,13 @@
-import 'windi.css';
+import 'windi.css'
 
-import { Avatar, Button, Col, Input, Row, Tabs } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Avatar, Button, Col, Input, Row, Tabs } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { LoginOutlined, UserOutlined } from '@ant-design/icons';
+import { LoginOutlined, UserOutlined } from '@ant-design/icons'
 
-import { data } from './DataSource';
-import styles from './index.module.less';
+import { data } from './DataSource'
+import styles from './index.module.less'
 
 const { TabPane } = Tabs
 
